@@ -9,7 +9,7 @@ inline fun <reified T> List<Any>.onlyOfType(): List<T> {
 }
 
 fun parseToken(token: String): Any =
-    token.toIntOrNull() ?: token.toDoubleOrNull() ?: token
+    token.toIntOrNull() ?: token.toDoubleOrNull() ?: token.toBooleanStrictOrNull() ?: token
 
 fun main() {
     print("Items separated by spaces (for example: 10 apples 2.5 7): ")
