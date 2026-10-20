@@ -4,6 +4,7 @@ inline fun <reified T> readValue(prompt: String): T? {
     print(prompt)
     val text = readln().trim()
     return when (T::class) {
+        Long::class -> text.toLongOrNull() as T?
         Int::class -> text.toIntOrNull() as T?
         Double::class -> text.toDoubleOrNull() as T?
         Boolean::class -> text.toBooleanStrictOrNull() as T?
@@ -17,5 +18,6 @@ fun main() {
     val height = readValue<Double>("Height in meters: ")
     val subscribed = readValue<Boolean>("Newsletter (true/false): ")
     val city = readValue<String>("City: ")
+    val phone = readValue<Long>("Phone: ")
     println("age=$age, height=$height, subscribed=$subscribed, city=$city")
 }
