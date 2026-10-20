@@ -6,7 +6,7 @@ fun main() {
     while (true) {
         val line = readln().trim()
         if (line == "done") break
-        val price = line.toDoubleOrNull() ?: run {
+        val price = line.toDoubleOrNull() ?: orSkip(line) {
             println("'$line' is not a number, skipped")
             continue
         }
@@ -19,4 +19,4 @@ fun main() {
     println("Items: ${prices.size}, total: ${prices.sum()}")
 }
 
-fun orSkip(text: String?, onNull: () -> Double): Double = text?.toDoubleOrNull() ?: onNull()
+inline fun orSkip(text: String?, onNull: () -> Double): Double = text?.toDoubleOrNull() ?: onNull()
