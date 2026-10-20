@@ -30,6 +30,8 @@ fun main() {
     val names: List<String> = none
     val ages: List<Int> = none
     println("${names.size} names, ${ages.size} ages")
+    print("Coupon: ")
+    println("Discount: ${discountFor(readln().trim())}%")
     println("Commands: add N, sub N, show, exit")
     runCalculator()
     println("This line is never reached")
