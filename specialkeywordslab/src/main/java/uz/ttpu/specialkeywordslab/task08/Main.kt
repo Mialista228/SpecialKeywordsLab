@@ -8,6 +8,9 @@ inline val Double.withVat: Double
 val String.wordCount: Int
     inline get() = split(" ").count { it.isNotBlank() }
 
+inline val Int.kilobytes: Int
+    get() = this * 1024
+
 fun main() {
     print("Price without VAT: ")
     val price = readln().trim().toDoubleOrNull()
@@ -19,4 +22,10 @@ fun main() {
     print("Write a sentence: ")
     val sentence = readln()
     println("Words: ${sentence.wordCount}")
+
+    print("Enter a number for kilobytes: ")
+    val kb = readln().trim().toIntOrNull()
+    if (kb != null) {
+        println("In bytes: ${kb.kilobytes}")
+    }
 }
