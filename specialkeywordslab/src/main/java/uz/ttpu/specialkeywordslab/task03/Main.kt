@@ -23,7 +23,7 @@ fun main() {
     print("Search: ")
     val query = readln().trim()
     findFirst(query)
-    findWithEach(query)
+    findAll(query)
     println("Search finished")
 }
 
