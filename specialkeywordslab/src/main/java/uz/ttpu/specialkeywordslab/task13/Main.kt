@@ -7,6 +7,7 @@ fun describe(value: Any?): String = when (value) {
     is Int -> "a number, doubled it is ${value * 2}"
     is Boolean -> if (value) "switched ON" else "switched OFF"
     is String -> "a text of ${value.length} characters"
+    is Double -> "a decimal number: $value"
     else -> "an unknown type: ${value.typeName()}"
 }
 
