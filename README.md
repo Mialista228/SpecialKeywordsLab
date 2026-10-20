@@ -219,3 +219,38 @@ Output for the additions:
 println(5.typeName()) prints Int
 
 println("x".typeName()) prints String
+
+Task 14
+
+1. Running with 20, abc, and -5
+With 20: Prints You will be 21 next year. No exception is thrown.
+With abc: Prints Input error: Age must be a whole number.
+With -5: Prints Input error: Age cannot be negative.
+Where the exception is caught: Inside the try-catch block located in main().
+2. Type of age with Nothing
+Type of age: Int (non-nullable).
+Why it is not Int?: Because fail(...) returns Nothing, which is a special bottom type that is a subtype of everything. The Elvis operator (?:) sees that the right-hand side never successfully returns a normal value, so it infers the expression's overall type strictly from the left-hand side (Int).
+3. Changing Nothing to Unit
+The errors: The compiler complains that type mismatch occurs because the Elvis operator expects both sides to share a compatible type (Int vs Unit), and you cannot use a Unit-returning function on the right side of ?: when an Int is required.
+Type of age now: If adjusted, it becomes Int? (nullable) because Unit produces a value, breaking the non-nullable guarantee.
+4. Adding fail("always") and println("after fail")
+How the IDE marks the second line (println): It is grayed out or marked as unreachable code.
+What it tells you about Nothing: Because fail() returns Nothing, execution never continues past it—the compiler knows code after it can never possibly run.
+5. TODO() and error() in the Standard Library
+Their return type: Both return Nothing for the exact same reason (they always throw an exception or fail execution).
+
+Task 15
+
+1. Return Type of runCalculator
+Why it can have return type Nothing: Because it contains an infinite loop (while (true)) that can only terminate by terminating the process via exitProcess(0). It never returns control normally to the caller.
+2. Unreachable Code in main
+Unreachable line: println("This line is never reached")
+What the IDE shows: The line is grayed out and marked with a warning as unreachable code because runCalculator() returns Nothing.
+3. Coupon Check & when Type Inference
+Execution output:
+student: Discount: 20%
+friend: Discount: 10%
+zzz: Throws IllegalStateException: Unknown coupon 'zzz'
+Type of the when expression: Int. Since Nothing is a subtype of every type (including Int), the compiler infers the result type as Int.
+4. Variance and List<Nothing>
+Why it can be assigned to List<String> and List<Int>: In Kotlin, List<out T> is covariant. Because Nothing is a bottom type (a subtype of all types, including String and Int), List<Nothing> is automatically a subtype of List<String> and List<Int>.
