@@ -1,6 +1,10 @@
 package uz.ttpu.specialkeywordslab.task10
 
-typealias Gradebook = MutableMap<String, MutableList<Int>>
+typealias Grades = MutableList<Int>
+
+typealias Gradebook = MutableMap<String, Grades>
+
+fun Grades.best(): Int? = maxOrNull()
 
 fun Gradebook.addGrade(student: String, grade: Int) {
     getOrPut(student) { mutableListOf() }.add(grade)
@@ -21,6 +25,6 @@ fun main() {
         book.addGrade(parts[0], grade)
     }
     for ((name, grades) in book) {
-        println("$name: ${grades.joinToString()}  average = ${"%.1f".format(grades.average())}")
+        println("$name: ${grades.joinToString()} | average = ${"%.1f".format(grades.average())} | best = ${grades.best()}")
     }
 }
